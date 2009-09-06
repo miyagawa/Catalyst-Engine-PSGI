@@ -22,6 +22,12 @@ if ($impl eq 'ServerSimple') {
     my $daemon = Mojo::Server::Daemon->new;
     $daemon->port(8080);
     PSGIRef::Impl::Mojo->start($daemon, $app);
+} elsif ($impl eq 'AnyEvent') {
+    require PSGIRef::Impl::AnyEvent;
+    my $server = PSGIRef::Impl::AnyEvent->new(port => 8080);
+    $server->psgi_app($app);
+    $server->run;
+    AnyEvent->condvar->recv;
 }
 
 
