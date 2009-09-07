@@ -119,7 +119,7 @@ sub run {
     eval {
         $c = $class->prepare(env => $env);
         $c->dispatch;
-#        $status = $c->finalize;
+        $status = $c->finalize;
     };
 
     if (my $error = $@) {
