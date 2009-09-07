@@ -159,16 +159,13 @@ Catalyst::Engine::PSGI - PSGI engine for Catalyst
   use strict;
   use MyApp;
 
-  my $app = sub {
-      my $env = shift;
-      MyApp->run($env);
-  };
+  my $app = sub { MyApp->run(@_) };
 
-  # run $app with PSGI implementation
+  # run $app with a PSGI implementation
 
 =head1 DESCRIPTION
 
-Catalyst::Engine::PSGI is a Catalyst Engin that uses PSGI implementation.
+Catalyst::Engine::PSGI is a Catalyst Engine that adapts Catalyst into the PSGI gateway protocol.
 
 =head1 AUTHOR
 
