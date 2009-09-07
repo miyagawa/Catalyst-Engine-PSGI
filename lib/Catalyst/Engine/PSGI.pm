@@ -136,7 +136,9 @@ sub run {
         $body = [ $body ];
     }
 
-    return [ $c->res->status, $c->res->headers, $body ];
+    my $headers = [];
+    $c->res->headers->scan(sub { push @$headers, @_ });
+    return [ $c->res->status, $headers, $body ];
 }
 
 no Moose;
