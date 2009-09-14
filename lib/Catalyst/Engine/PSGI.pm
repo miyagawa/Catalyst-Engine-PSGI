@@ -95,10 +95,13 @@ sub prepare_request {
     if ( $args{env} ) {
         $self->env( $args{env} );
     }
+
+    $self->{buffer} = '';
 }
 
 sub write {
-    # shouldn't be called
+    my($self, $c, $buffer) = @_;
+    $self->{buffer} .= $buffer;
 }
 
 sub finalize_body {
@@ -132,7 +135,9 @@ sub run {
     }
 
     my $body = $c->res->body;
-    unless (blessed($body) && $body->can('read') or ref($body) eq 'GLOB' ) {
+    if (!ref $body && $body eq '' && $self->{buffer}) {
+        $body = [ $self->{buffer} ];
+    } elsif (!ref $body) {
         $body = [ $body ];
     }
 
