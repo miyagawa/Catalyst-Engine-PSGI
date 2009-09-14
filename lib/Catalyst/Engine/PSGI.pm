@@ -101,7 +101,7 @@ sub prepare_request {
 
 sub write {
     my($self, $c, $buffer) = @_;
-    $self->{buffer} .= $buffer;
+    $self->{buffer} .= $buffer if defined $buffer;
 }
 
 sub finalize_body {
@@ -134,12 +134,15 @@ sub run {
         $class->log->$coderef();
     }
 
-    return unless $c;
+    return [ 500, [ 'Content-Type' => 'text/plain', 'Content-Length' => 11 ], [ 'Bad request' ] ]
+        unless $c;
 
     my $body = $c->res->body;
     if (!ref $body && $body eq '' && $self->{buffer}) {
         $body = [ $self->{buffer} ];
-    } elsif (!ref $body) {
+    } elsif (ref($body) eq 'GLOB' || (Scalar::Util::blessed($body) && $body->can('getline'))) {
+        # $body is FH
+    } else {
         $body = [ $body ];
     }
 
