@@ -31,7 +31,7 @@ sub prepare_headers {
     my $env = $self->env;
     my $headers = $c->request->headers;
     foreach my $header ( keys %$env ) {
-        next unless $header =~ /^HTTPS?_/;
+        next unless $header =~ /^(HTTP|CONTENT|COOKIE)/i;
         ( my $field = $header ) =~ s/^HTTPS?_//;
         $field =~ tr/_/-/;
         $headers->header( $field => $env->{$header} );
@@ -110,7 +110,7 @@ sub finalize_body {
 
 sub read_chunk {
     my($self, $c) = (shift, shift);
-    $c->env->{'psgi.input'}->read(@_);
+    $self->env->{'psgi.input'}->read(@_);
 }
 
 sub run {
