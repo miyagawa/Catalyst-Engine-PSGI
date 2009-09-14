@@ -134,6 +134,8 @@ sub run {
         $class->log->$coderef();
     }
 
+    return unless $c;
+
     my $body = $c->res->body;
     if (!ref $body && $body eq '' && $self->{buffer}) {
         $body = [ $self->{buffer} ];
