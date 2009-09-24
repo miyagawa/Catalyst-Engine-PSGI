@@ -177,6 +177,27 @@ Catalyst::Engine::PSGI - PSGI engine for Catalyst
 
 Catalyst::Engine::PSGI is a Catalyst Engine that adapts Catalyst into the PSGI gateway protocol.
 
+=head1 COMPATIBLITY
+
+=over 4
+
+=item *
+
+Currently this engine works with Catlayst 5.8 (Catamoose) or over.
+
+=item *
+
+Your application should work with any PSGI backends
+(e.g. Plack::Impl::*) unmodified, but if your application uses C<<
+$c->res->write >> to do streamin write, this engine would buffer the
+ouput until your app finishes.
+
+To do real streaming with this engine, you should implement an
+IO::Handle-like object that responds to C<getline> method that returns
+chunk or undef when done, and set that object to C<< $c->res->body >>.
+
+=back
+
 =head1 AUTHOR
 
 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
