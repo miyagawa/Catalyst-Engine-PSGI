@@ -166,12 +166,12 @@ Catalyst::Engine::PSGI - PSGI engine for Catalyst
 
 =head1 SYNOPSIS
 
+  # app.psgi
   use strict;
   use MyApp;
 
+  MyApp->setup_engine('PSGI');
   my $app = sub { MyApp->run(@_) };
-
-  # run $app with a PSGI implementation
 
 =head1 DESCRIPTION
 
@@ -187,10 +187,10 @@ Currently this engine works with Catlayst 5.8 (Catamoose) or over.
 
 =item *
 
-Your application should work with any PSGI backends
-(e.g. Plack::Impl::*) unmodified, but if your application uses C<<
-$c->res->write >> to do streamin write, this engine would buffer the
-ouput until your app finishes.
+Your application is supposed to work with any PSGI servers without any
+code modifications, but if your application uses C<< $c->res->write >>
+to do streamin write, this engine would buffer the ouput until your
+app finishes.
 
 To do real streaming with this engine, you should implement an
 IO::Handle-like object that responds to C<getline> method that returns

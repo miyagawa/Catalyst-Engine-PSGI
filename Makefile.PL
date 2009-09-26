@@ -2,6 +2,9 @@ use inc::Module::Install;
 name 'Catalyst-Engine-PSGI';
 all_from 'lib/Catalyst/Engine/PSGI.pm';
 
+requires 'Catalyst::Runtime';
+test_requires 'Test::TCP';
+
 build_requires 'Test::More';
 use_test_base;
 auto_include_deps;

@@ -1,35 +1,34 @@
 use strict;
 use Test::More;
+use Test::Requires qw( Plack::Loader LWP );
 use lib "t/Hello/lib";
+use Test::TCP;
+use LWP::UserAgent;
 
-BEGIN { $ENV{CATALYST_ENGINE} = 'PSGI' }
 use Hello;
+Hello->setup_engine('PSGI');
 
-my $app = sub {
-    my $env = shift;
-    Hello->run($env);
-};
+my $app = sub { Hello->run(@_) };
 
-my $impl = $ENV{PSGI_IMPL};
-if ($impl eq 'ServerSimple') {
-    require PSGIRef::Impl::ServerSimple;
-    my $server = PSGIRef::Impl::ServerSimple->new(8080);
-    $server->psgi_app($app);
-    $server->run;
-} elsif ($impl eq 'Mojo') {
-    require PSGIRef::Impl::Mojo;
-    require Mojo::Server::Daemon;
-    my $daemon = Mojo::Server::Daemon->new;
-    $daemon->port(8080);
-    PSGIRef::Impl::Mojo->start($daemon, $app);
-} elsif ($impl eq 'AnyEvent') {
-    require PSGIRef::Impl::AnyEvent;
-    my $server = PSGIRef::Impl::AnyEvent->new(port => 8080);
-    $server->psgi_app($app);
-    $server->run;
-    AnyEvent->condvar->recv;
-}
+test_tcp(
+    client => sub {
+        my $port = shift;
+        my $ua = LWP::UserAgent->new;
+        my $res = $ua->get("http://127.0.0.1:$port/welcome");
+        like $res->content, qr/Welcome/;
 
+        $res = $ua->get("http://127.0.0.1:$port/?name=foo");
+        is $res->content_type, 'text/plain';
+        like $res->content, qr/Hello foo/;
 
+        $res = $ua->post("http://127.0.0.1:$port/", { name => "bar" });
+        like $res->content, qr/Hello bar/;
+    },
+    server => sub {
+        my $port = shift;
+        Plack::Loader->auto(port => $port)->run($app);
+    },
+);
 
+done_testing;
 

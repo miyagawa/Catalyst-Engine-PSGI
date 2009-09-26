@@ -26,11 +26,18 @@ Hello::Controller::Root - Root Controller for Hello
 
 =cut
 
-sub index :Path :Args(0) {
+sub welcome :Local {
     my ( $self, $c ) = @_;
 
     # Hello World
     $c->response->body( $c->welcome_message );
+}
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+
+    $c->res->content_type('text/plain');
+    $c->res->body("Hello " . $c->req->param('name'));
 }
 
 sub default :Path {
