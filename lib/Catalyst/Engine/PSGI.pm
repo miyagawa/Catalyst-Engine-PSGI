@@ -222,6 +222,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-I<Catalyst::Engine> L<PSGIRef> I<Plack>
+I<Catalyst::Engine> L<PSGI> I<Plack>
 
 =cut
