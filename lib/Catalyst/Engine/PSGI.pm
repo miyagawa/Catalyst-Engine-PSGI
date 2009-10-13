@@ -58,7 +58,9 @@ sub prepare_path {
     my $base_path = $env->{SCRIPT_NAME} || "/";
 
     # set the request URI
-    my $path = _uri_safe_unescape($env->{REQUEST_URI});
+    my $req_uri = $env->{REQUEST_URI};
+       $req_uri =~ s/\?.*$//;
+    my $path = _uri_safe_unescape($req_uri);
     $path =~ s{^/+}{};
 
     # Using URI directly is way too slow, so we construct the URLs manually
