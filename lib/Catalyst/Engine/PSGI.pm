@@ -2,7 +2,7 @@ package Catalyst::Engine::PSGI;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Moose;
 extends 'Catalyst::Engine';

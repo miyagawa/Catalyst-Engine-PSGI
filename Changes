@@ -1,4 +1,7 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.02  Tue Oct 13 13:28:49 PDT 2009
+        - Do not use Static::Simple in the test (Thanks to beppu)
+
 0.01  Sat Sep  5 17:29:03 2009
         - original version
