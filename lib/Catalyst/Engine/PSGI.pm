@@ -8,6 +8,15 @@ use Moose;
 extends 'Catalyst::Engine';
 
 use Scalar::Util qw(blessed);
+use URI;
+
+# This is what Catalyst does to decode path. Not compatible to CGI RFC 3875
+my %reserved = map { sprintf('%02x', ord($_)) => 1 } split //, $URI::reserved;
+sub _uri_safe_unescape {
+    my ($s) = @_;
+    $s =~ s/%([a-fA-F0-9]{2})/$reserved{lc($1)} ? "%$1" : pack('C', hex($1))/ge;
+    $s
+}
 
 sub prepare_connection {
     my ( $self, $c ) = @_;
@@ -49,7 +58,7 @@ sub prepare_path {
     my $base_path = $env->{SCRIPT_NAME} || "/";
 
     # set the request URI
-    my $path = $base_path . ( $env->{PATH_INFO} || '' );
+    my $path = _uri_safe_unescape($env->{REQUEST_URI});
     $path =~ s{^/+}{};
 
     # Using URI directly is way too slow, so we construct the URLs manually
