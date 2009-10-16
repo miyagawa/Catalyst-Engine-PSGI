@@ -4,6 +4,7 @@ all_from 'lib/Catalyst/Engine/PSGI.pm';
 
 requires 'Catalyst::Runtime';
 test_requires 'Test::TCP';
+test_requires 'Test::Requires';
 
 build_requires 'Test::More';
 use_test_base;

@@ -18,6 +18,7 @@ inc/Test/Base/Filter.pm
 inc/Test/Builder.pm
 inc/Test/Builder/Module.pm
 inc/Test/More.pm
+inc/Test/Requires.pm
 inc/Test/SharedFork.pm
 inc/Test/SharedFork/Array.pm
 inc/Test/SharedFork/Scalar.pm
