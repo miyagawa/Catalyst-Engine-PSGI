@@ -1,5 +1,8 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.05  Mon Oct 26 00:44:11 PDT 2009
+        - Removed another Catalyst dev dependency
+
 0.04  Mon Oct 19 19:41:51 PDT 2009
         - Bump up Catalyst dep to 5.8 (thanks to mst)
 

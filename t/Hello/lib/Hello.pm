@@ -14,8 +14,7 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use parent qw/Catalyst/;
-use Catalyst qw/-Debug
-                ConfigLoader/;
+use Catalyst qw/-Debug/;
 our $VERSION = '0.01';
 
 # Configure the application.
