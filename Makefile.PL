@@ -2,7 +2,8 @@ use inc::Module::Install;
 name 'Catalyst-Engine-PSGI';
 all_from 'lib/Catalyst/Engine/PSGI.pm';
 
-requires 'Catalyst::Runtime', '5.80';
+requires 'Catalyst::Runtime' => '5.80007';
+requires 'Catalyst::Action::RenderView';
 test_requires 'Test::TCP';
 test_requires 'Test::Requires';
 
