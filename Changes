@@ -1,5 +1,8 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.06  Sat Nov  7 20:20:45 PST 2009
+        - Added Action::RenderView dependency
+
 0.05  Mon Oct 26 00:44:11 PDT 2009
         - Removed another Catalyst dev dependency
 
