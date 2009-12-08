@@ -23,6 +23,9 @@ test_tcp(
 
         $res = $ua->post("http://127.0.0.1:$port/", { name => "bar" });
         like $res->content, qr/Hello bar/;
+
+        $res = $ua->get("http://127.0.0.1:$port/metal");
+        like $res->content, qr/Hello Metal/;
     },
     server => sub {
         my $port = shift;

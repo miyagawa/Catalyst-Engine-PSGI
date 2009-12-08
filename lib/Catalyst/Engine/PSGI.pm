@@ -9,6 +9,7 @@ extends 'Catalyst::Engine';
 
 use Scalar::Util qw(blessed);
 use URI;
+use Catalyst::Controller::Metal;
 
 # This is what Catalyst does to decode path. Not compatible to CGI RFC 3875
 my %reserved = map { sprintf('%02x', ord($_)) => 1 } split //, $URI::reserved;
@@ -126,6 +127,14 @@ sub read_chunk {
 
 sub run {
     my($self, $class, $env) = @_;
+
+    # short circuit with Metal
+    for my $metal (Catalyst::Controller::Metal->metals_for($class)) {
+        my $res = $metal->call($env);
+        if (defined $res && !(ref $res eq 'ARRAY' && $res->[0] == 404)) {
+            return $res;
+        }
+    }
 
     # what Catalyst->handle_request does
     my $status = -1;
