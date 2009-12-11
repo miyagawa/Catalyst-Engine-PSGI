@@ -24,6 +24,7 @@ inc/Test/SharedFork/Array.pm
 inc/Test/SharedFork/Scalar.pm
 inc/Test/SharedFork/Store.pm
 inc/Test/TCP.pm
+lib/Catalyst/Controller/Metal.pm
 lib/Catalyst/Engine/PSGI.pm
 lib/Catalyst/Helper/PSGI.pm
 lib/Plack/Test/Adopt/Catalyst.pm
@@ -224,6 +225,7 @@ t/hello.t
 t/Hello/Changes
 t/Hello/hello.conf
 t/Hello/lib/Hello.pm
+t/Hello/lib/Hello/Controller/Metalic.pm
 t/Hello/lib/Hello/Controller/Root.pm
 t/Hello/Makefile.PL
 t/Hello/README
@@ -237,6 +239,7 @@ t/Hello/root/static/images/btn_88x31_built_shadow.png
 t/Hello/root/static/images/btn_88x31_powered.png
 t/Hello/root/static/images/btn_88x31_powered_shadow.png
 t/Hello/root/static/images/catalyst_logo.png
+t/Hello/script/hello.psgi
 t/Hello/script/hello_cgi.pl
 t/Hello/script/hello_create.pl
 t/Hello/script/hello_fastcgi.pl
