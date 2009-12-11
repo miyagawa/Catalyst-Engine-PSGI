@@ -145,6 +145,9 @@ sub run {
         $status = $c->finalize;
     };
 
+    # clear the $env ref to avoid leaks
+    $self->env(undef);
+
     if (my $error = $@) {
         chomp $error;
         $class->log->error(qq/Caught exception in engine "$error"/);
