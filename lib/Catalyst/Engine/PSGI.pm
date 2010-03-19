@@ -73,6 +73,9 @@ sub prepare_path {
     my $req_uri = $env->{REQUEST_URI};
        $req_uri =~ s/\?.*$//;
     my $path = _uri_safe_unescape($req_uri);
+    if ($path eq $base_path) {
+        $path .= "/"; # To fool catalyst a bit
+    }
     $path =~ s{^/+}{};
 
     # Using URI directly is way too slow, so we construct the URLs manually
