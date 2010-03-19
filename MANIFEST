@@ -248,6 +248,7 @@ t/Hello/script/hello_test.pl
 t/Hello/t/01app.t
 t/Hello/t/02pod.t
 t/Hello/t/03podcoverage.t
+t/hello_mount.t
 xt/catalyst.t
 xt/perlcritic.t
 xt/pod.t

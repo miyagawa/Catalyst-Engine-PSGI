@@ -1,5 +1,8 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.08  Fri Mar 19 00:58:35 PDT 2010
+        - Fixed a problem with URLMap where root access gets an empty path (omega)
+
 0.07  Thu Dec 10 22:14:04 PST 2009
         - Clear env reference to avoid leaks in Servers like AnyEvent (chiba)
         - Added Catalyst::Controller::Metal
