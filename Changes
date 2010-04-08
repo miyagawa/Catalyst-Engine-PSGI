@@ -1,5 +1,8 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.09  Wed Apr  7 20:17:57 PDT 2010
+        - Escape :: in the helpers for .psgi files (lestrrat)
+
 0.08  Fri Mar 19 00:58:35 PDT 2010
         - Fixed a problem with URLMap where root access gets an empty path (omega)
 
