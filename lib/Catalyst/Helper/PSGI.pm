@@ -9,6 +9,8 @@ sub mk_stuff {
     my $base = $helper->{base};
     my $app  = lc $helper->{app};
 
+    $app =~ s/::/_/g;
+
     my $script = File::Spec->catfile($base, 'script', "$app.psgi");
 
     $helper->render_file('psgi_app', $script);
