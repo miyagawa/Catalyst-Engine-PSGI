@@ -237,7 +237,7 @@ chunk or undef when done, and set that object to C<< $c->res->body >>.
 
 When your application runs behind the frontend proxy like nginx or
 lighttpd, this Catalyst engine doesn't automatically recognize the
-incoming headers like C<X-Forwaeded-For>, because respecting these
+incoming headers like C<X-Forwarded-For>, because respecting these
 headers by default causes a potential security issue.
 
 You have to enable L<Plack::Middleware::ReverseProxy> or
