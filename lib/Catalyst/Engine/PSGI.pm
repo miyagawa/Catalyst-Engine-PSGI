@@ -179,6 +179,8 @@ sub run {
         $body = [ $self->{buffer} ];
     } elsif (ref($body) eq 'GLOB' || (Scalar::Util::blessed($body) && $body->can('getline'))) {
         # $body is FH
+    } elsif (ref($body) eq 'CODE') {
+        return $body;
     } else {
         $body = [ $body ];
     }
