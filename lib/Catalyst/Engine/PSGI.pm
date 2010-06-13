@@ -235,6 +235,10 @@ To do real streaming with this engine, you should implement an
 IO::Handle-like object that responds to C<getline> method that returns
 chunk or undef when done, and set that object to C<< $c->res->body >>.
 
+Alternatively, it is possible to set the body to a code reference,
+which will be used to steam content as documented in the
+L<PSGI/Delayed_Reponse_and_Streaming_Body|PSGI spec>.
+
 =item *
 
 When your application runs behind the frontend proxy like nginx or
