@@ -237,7 +237,7 @@ chunk or undef when done, and set that object to C<< $c->res->body >>.
 
 Alternatively, it is possible to set the body to a code reference,
 which will be used to steam content as documented in the
-L<PSGI/Delayed_Reponse_and_Streaming_Body|PSGI spec>.
+L<PSGI spec|PSGI/Delayed_Reponse_and_Streaming_Body>.
 
 =item *
 
