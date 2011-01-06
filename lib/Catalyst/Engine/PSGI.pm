@@ -175,6 +175,7 @@ sub run {
         unless $c;
 
     my $body = $c->res->body;
+    $body = '' unless defined $body;
     if (!ref $body && $body eq '' && $self->{buffer}) {
         $body = [ $self->{buffer} ];
     } elsif (ref($body) eq 'GLOB' || (Scalar::Util::blessed($body) && $body->can('getline'))) {
