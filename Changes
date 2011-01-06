@@ -1,5 +1,8 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.12  Thu Jan  6 14:37:53 PST 2011
+        - Fix for Catalyst::Runtime >= 5.80030 (pedromelo)
+
 0.11  Fri Jul 30 12:49:46 PDT 2010
         - Allows setting a code reference to the $c->res->body as
           a raw PSGI streaming (t0m)
