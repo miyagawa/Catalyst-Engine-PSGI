@@ -41,7 +41,7 @@ Catalyst::Controller::Metal - Raw PSGI handling in Catalyst controllers
 
 Catalyst::Controller::Metal allows you to write a raw PSGI handler in
 your Catalyst application, inspired by Rails Metal that allows you to
-write raw Rack application inside Ruby on Rails.
+write raw Rack applications inside Ruby on Rails.
 
 =head1 SEE ALSO
 
