@@ -194,7 +194,6 @@ sub run {
 sub _escape {
     local $_ = shift;
     s/(\r?\n)+/ /g;
-    s/ +/ /g;
     return $_;
 }
 
