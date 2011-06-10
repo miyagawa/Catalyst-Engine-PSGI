@@ -1,5 +1,9 @@
 Revision history for Perl extension Catalyst::Engine::PSGI
 
+0.13  Thu Jun  9 23:58:10 PDT 2011
+        - Fixed a bug in PSGI header generation to prevent potential HTTP header injection
+        - Misc doc fixes
+
 0.12  Thu Jan  6 14:37:53 PST 2011
         - Fix for Catalyst::Runtime >= 5.80030 (pedromelo)
 
