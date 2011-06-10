@@ -187,8 +187,15 @@ sub run {
     }
 
     my $headers = [];
-    $c->res->headers->scan(sub { push @$headers, @_ });
+    $c->res->headers->scan(sub { my($k, $v) = @_; push @$headers, $k, _escape($v) });
     return [ $c->res->status, $headers, $body ];
+}
+
+sub _escape {
+    local $_ = shift;
+    s/(\r?\n)+/ /g;
+    s/ +/ /g;
+    return $_;
 }
 
 no Moose;

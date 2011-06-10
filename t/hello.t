@@ -26,6 +26,10 @@ test_tcp(
 
         $res = $ua->get("http://127.0.0.1:$port/metal");
         like $res->content, qr/Hello Metal/;
+
+        $res = $ua->get("http://127.0.0.1:$port/headers");
+        is $res->content, 'blah';
+        like $res->header('X-Foo'), qr/^bar\s+baz$/;
     },
     server => sub {
         my $port = shift;

@@ -40,6 +40,12 @@ sub index :Path :Args(0) {
     $c->res->body("Hello " . $c->req->param('name'));
 }
 
+sub headers :Local {
+    my( $self, $c ) = @_;
+    $c->res->header("X-Foo" => "bar\r\n\r\nbaz");
+    $c->res->body("blah");
+}
+
 sub default :Path {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
