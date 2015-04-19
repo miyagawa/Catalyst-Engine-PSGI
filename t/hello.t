@@ -1,5 +1,5 @@
 use strict;
-use Test::More;
+use Test::More skip_all => 1;
 use Test::Requires qw( Plack::Loader LWP );
 use lib "t/Hello/lib";
 use Test::TCP;
