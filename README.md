@@ -2,6 +2,8 @@
 
 Catalyst::Engine::PSGI - PSGI engine for Catalyst
 
+# WARNINGS
+
 **Catalyst 5.9000 or later has a built-in PSGI support and this module is deprecated.**
 
 # SYNOPSIS
@@ -60,11 +62,3 @@ it under the same terms as Perl itself.
 # SEE ALSO
 
 _Catalyst::Engine_ [PSGI](https://metacpan.org/pod/PSGI) _Plack_
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 11:
-
-    Unknown directive: =haed1
