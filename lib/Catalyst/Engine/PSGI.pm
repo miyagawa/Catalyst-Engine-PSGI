@@ -210,7 +210,7 @@ __END__
 
 Catalyst::Engine::PSGI - PSGI engine for Catalyst
 
-=haed1 WARNINGS
+=head1 WARNINGS
 
 B<Catalyst 5.9000 or later has a built-in PSGI support and this module is deprecated.>
 

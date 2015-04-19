@@ -64,7 +64,7 @@
          "web" : "https://github.com/miyagawa/Catalyst-Engine-PSGI"
       }
    },
-   "version" : "0.13",
+   "version" : "0.14",
    "x_contributors" : [
       "Andreas Marienborg <andreas.marienborg@gmail.com>",
       "chromatic <chromatic@wgz.org>",
