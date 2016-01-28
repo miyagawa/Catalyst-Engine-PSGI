@@ -213,6 +213,7 @@ Catalyst::Engine::PSGI - PSGI engine for Catalyst
 =head1 WARNINGS
 
 B<Catalyst 5.9000 or later has a built-in PSGI support and this module is deprecated.>
+See L<Catalyst::PSGI> for details.
 
 =head1 SYNOPSIS
 
